@@ -1,7 +1,8 @@
 name: Deploy to GitHub Pages
 
 on: workflow_dispatch
-
+env:
+  UV_SYSTEM_PYTHON: 1
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +20,7 @@ jobs:
 
       - name: 📦 Install dependencies
         run: |
-          uv pip install marimo --system
+          uv pip install marimo
           
       - name: 🛠️ Export notebooks
         run: |
