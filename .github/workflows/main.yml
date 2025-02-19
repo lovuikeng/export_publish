@@ -21,13 +21,14 @@ jobs:
         run: |
           uv pip install marimo --system
           
-      - name: Export notebook
-        run: marimo export html-wasm notebook.py -o path/to/output --mode run
- 
-      - name: Upload Pages Artifact
+      - name: 🛠️ Export notebooks
+        run: |
+          python scripts/build.py
+
+      - name: 📤 Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: path/to/output
+          path: _site
  
   deploy:
     needs: build
